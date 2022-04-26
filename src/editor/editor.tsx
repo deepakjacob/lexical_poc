@@ -1,4 +1,4 @@
-import { $getRoot, $getSelection } from "lexical";
+import { $getRoot, $getSelection, EditorState } from "lexical";
 import { useEffect } from "react";
 
 import LexicalComposer from "@lexical/react/LexicalComposer";
@@ -10,12 +10,13 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { TermNode } from "./TermNode";
 import { TermButton } from "./TermButton";
 import { TermPlugin } from "./TermPlugin";
+import { ActionsPlugin } from "./ActionsPlugin";
 
 const theme = {};
 
 // When the editor changes, you can get notified via the
 // LexicalOnChangePlugin!
-function onChange(editorState: any) {
+function onChange(editorState: EditorState) {
   editorState.read(() => {
     // Read the contents of the EditorState here.
     const root = $getRoot();
@@ -65,6 +66,7 @@ function Editor() {
         <MyCustomAutoFocusPlugin />
         <TermPlugin />
         <TermButton />
+        <ActionsPlugin />
       </LexicalComposer>
     </>
   );
