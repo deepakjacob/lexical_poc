@@ -9,8 +9,12 @@ import { useEffect } from "react";
 import { $createTermNode } from "./TermNode";
 
 // Create a custom command with a typed payload.
-type CommandPayload = { term: string; description: string; value: string };
-export const INSERT_TERM_COMMAND: LexicalCommand<CommandPayload> =
+type InsertTermCommandPayload = {
+  term: string;
+  description: string;
+  value: string;
+};
+export const INSERT_TERM_COMMAND: LexicalCommand<InsertTermCommandPayload> =
   createCommand();
 
 export function TermPlugin() {
@@ -20,7 +24,7 @@ export function TermPlugin() {
     // Similar with command listener, which returns unlisten callback
     const removeListener = editor.registerCommand(
       INSERT_TERM_COMMAND,
-      (payload: CommandPayload) => {
+      (payload: InsertTermCommandPayload) => {
         // Adding custom command that will be handled by this plugin
         editor.update(() => {
           const selection = $getSelection();
