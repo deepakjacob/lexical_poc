@@ -1,0 +1,39 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ *
+ */
+
+.EditorTheme__ltr {
+  text-align: left;
+}
+.EditorTheme__rtl {
+  text-align: right;
+}
+.EditorTheme__paragraph {
+  margin: 0;
+  margin-bottom: 8px;
+  position: relative;
+}
+.EditorTheme__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+.EditorTheme__textBold {
+  font-weight: bold;
+}
+.EditorTheme__textItalic {
+  font-style: italic;
+}
+.EditorTheme__textUnderline {
+  text-decoration: underline;
+}
+.EditorTheme__textStrikethrough {
+  text-decoration: line-through;
+}
+.EditorTheme__textUnderlineStrikethrough {
+  text-decoration: underline line-through;
+}

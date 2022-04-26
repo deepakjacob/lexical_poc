@@ -5,7 +5,7 @@ import Editor from "./editor/editor";
 
 function App() {
   return (
-    <div className="App">
+    <div className="editor-shell">
       <Editor />
     </div>
   );

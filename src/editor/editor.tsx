@@ -1,14 +1,17 @@
 import LexicalComposer from "@lexical/react/LexicalComposer";
-import LexicalPlainTextPlugin from "@lexical/react/LexicalPlainTextPlugin";
 import LexicalContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import LexicalOnChangePlugin from "@lexical/react/LexicalOnChangePlugin";
-import { TermNode } from "./TermNode";
-import { TermButton } from "./TermButton";
-import { TermPlugin } from "./TermPlugin";
+import RichTextPlugin from "@lexical/react/LexicalRichTextPlugin";
+import EditorTheme from "../themes/EditorTheme";
 import { ActionsPlugin } from "./ActionsPlugin";
 import { AutoFocusPlugin } from "./AutoFocusPlugin";
 import { onChange } from "./onChange";
+import { useSharedHistoryContext } from "./SharedHistoryContext";
+import { TermButton } from "./TermButton";
+import { TermNode } from "./TermNode";
+import { TermPlugin } from "./TermPlugin";
+import { ToolbarPlugin } from "./ToolbarPlugin";
 
 const theme = {};
 
@@ -21,23 +24,33 @@ function onError(error: any) {
 
 function Editor() {
   const initialConfig = {
-    theme,
-    onError,
+    nodes: [TermNode],
+    onError: (error: any) => {
+      console.log(error);
+    },
+    theme: EditorTheme,
   };
-
+  const { historyState } = useSharedHistoryContext();
   return (
     <>
-      <LexicalComposer initialConfig={{ ...initialConfig, nodes: [TermNode] }}>
-        <LexicalPlainTextPlugin
+      <LexicalComposer initialConfig={initialConfig as any}>
+        <ToolbarPlugin />
+        <div className="editor-container">
+          {/* <LexicalPlainTextPlugin
           contentEditable={<LexicalContentEditable />}
           placeholder={<div>Enter some text...</div>}
-        />
-        <LexicalOnChangePlugin onChange={onChange} />
-        <HistoryPlugin />
-        <AutoFocusPlugin />
-        <TermPlugin />
-        <TermButton />
-        <ActionsPlugin />
+        /> */}
+          <RichTextPlugin
+            contentEditable={<LexicalContentEditable />}
+            placeholder={<div></div>}
+          />
+          <LexicalOnChangePlugin onChange={onChange} />
+          <HistoryPlugin externalHistoryState={historyState} />
+          <AutoFocusPlugin />
+          <TermPlugin />
+          <TermButton />
+          <ActionsPlugin />
+        </div>
       </LexicalComposer>
     </>
   );
