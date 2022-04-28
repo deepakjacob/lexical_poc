@@ -12,7 +12,7 @@ import { TermButton } from "./TermButton";
 import { TermNode } from "./TermNode";
 import { TermPlugin } from "./TermPlugin";
 import { ToolbarPlugin } from "./ToolbarPlugin";
-
+import LexicalMarkdownShortcutPlugin from "@lexical/react/LexicalMarkdownShortcutPlugin";
 const theme = {};
 
 // Catch any errors that occur during Lexical updates and log them
@@ -44,7 +44,8 @@ function Editor() {
             contentEditable={<LexicalContentEditable />}
             placeholder={<div></div>}
           />
-          <LexicalOnChangePlugin onChange={onChange} />
+          <LexicalMarkdownShortcutPlugin />
+          {/* <LexicalOnChangePlugin onChange={onChange} /> */}
           <HistoryPlugin externalHistoryState={historyState} />
           <AutoFocusPlugin />
           <TermPlugin />
