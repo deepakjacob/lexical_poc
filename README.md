@@ -10,15 +10,15 @@
 With things in mind, we looked at how we could keep the good ideas from Draft, Slate, ProseMirror and also invent some new ideas of our own. 
 
 - Lexical doesn't have any dependencies, so you can use it with Svelte or Solid (once their bindings have been created), or any other framework of your choice. 
-- 
+
 - Lexical also doesn't need ImmutableJS, which means the APIs are fully typed in Flow and TypeScript, reducing issues. 
-- 
+
 - Lexical is also around 22kb gzip+min, so it's far smaller than Draft. 
-- 
+
 - Typing performance in our testing is around 30-70% faster compared to Draft.
-- 
+
 - Lexical also treat its own EditorState as the source of truth, use DOM MutationObservers to ensure the DOM matches the EditorState at all times. It also allows external mutations from things like spellcheckers update Lexical – otherwise people wouldn't be able to use Grammarly and other tools with Lexical. However, that's really constrained so that they don't overreach.
-- 
+
 - Lexical also has the notion of double-buffering. When you update Lexical, or use a node transform, you're actually mutating the "work in progress" EditorState. Once Lexical feels that the EditorState is ready, it will commit it to the DOM, and that EditorState will become immutable and will reflect what you see on the page.
-- 
+
 - It is in production at Facebook. Now slowly rolling out to more surfaces, replacing existing DraftJS implementations. They have noticed a big improvement internally from doing so, both in terms of less bugs but also performance and accessibility.
