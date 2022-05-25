@@ -7,6 +7,7 @@ import {
   FORMAT_TEXT_COMMAND,
 } from "lexical";
 import { useCallback, useEffect, useState } from "react";
+import BlockFormatDropDown from "./BlockFormatDropdown";
 import { IS_APPLE } from "./shared";
 
 export interface ToolbarPluginProps {}
@@ -18,6 +19,18 @@ export const ToolbarPlugin = (props: ToolbarPluginProps) => {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
+  const [blockType, setBlockType] = useState("paragraph");
+
+  const supportedBlockTypes = new Set([
+    "paragraph",
+    "quote",
+    "h1",
+    "h2",
+    "h3",
+    "bullet",
+    "number",
+    "check",
+  ]);
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -91,6 +104,12 @@ export const ToolbarPlugin = (props: ToolbarPluginProps) => {
         <i className="format strikethrough" />
       </button>
       <Divider />
+      {supportedBlockTypes.has(blockType) && activeEditor === editor && (
+        <>
+          <BlockFormatDropDown blockType={blockType} editor={editor} />
+          <Divider />
+        </>
+      )}
     </div>
   );
 };

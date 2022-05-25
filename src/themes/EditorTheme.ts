@@ -8,7 +8,6 @@
  */
 
 import "./EditorTheme.css";
-
 const theme = {
   characterLimit: "EditorTheme__characterLimit",
   code: "EditorTheme__code",
@@ -56,6 +55,8 @@ const theme = {
   link: "EditorTheme__link",
   list: {
     listitem: "EditorTheme__listItem",
+    listitemChecked: "EditorTheme__listItemChecked",
+    listitemUnchecked: "EditorTheme__listItemUnchecked",
     nested: {
       listitem: "EditorTheme__nestedListItem",
     },
@@ -69,6 +70,8 @@ const theme = {
     ul: "EditorTheme__ul",
   },
   ltr: "EditorTheme__ltr",
+  mark: "EditorTheme__mark",
+  markOverlap: "EditorTheme__markOverlap",
   paragraph: "EditorTheme__paragraph",
   quote: "EditorTheme__quote",
   rtl: "EditorTheme__rtl",
@@ -80,6 +83,8 @@ const theme = {
     code: "EditorTheme__textCode",
     italic: "EditorTheme__textItalic",
     strikethrough: "EditorTheme__textStrikethrough",
+    subscript: "EditorTheme__textSubscript",
+    superscript: "EditorTheme__textSuperscript",
     underline: "EditorTheme__textUnderline",
     underlineStrikethrough: "EditorTheme__textUnderlineStrikethrough",
   },
